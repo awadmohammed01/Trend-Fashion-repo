@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jQ4/mq/fI7/qRVzptli5JBcKGuvsbl5P3IXJKZTWh+oYwxiRB9Vr5tRqggZX+z4onvL7huPnbTNuOX4pGTs4gg==",
+  "dgSpecHash": "1m/5sxqmGr4lTGh2jhTIfk0BRSaw3O0LkVzFz83jmLadYYNeWGsLp+i7M9P0K/HhnEvyM/a1fSum8mD5taiNpA==",
   "success": true,
-  "projectFilePath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
+  "projectFilePath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend-Fashion-repo\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\awad\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\awad\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

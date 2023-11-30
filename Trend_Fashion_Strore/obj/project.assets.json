@@ -8311,11 +8311,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
+      "projectUniqueName": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend-Fashion-repo\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
       "projectName": "Trend_Fashion_Strore",
-      "projectPath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
+      "projectPath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend-Fashion-repo\\Trend_Fashion_Strore\\Trend_Fashion_Strore.csproj",
       "packagesPath": "C:\\Users\\awad\\.nuget\\packages\\",
-      "outputPath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend_Fashion_Strore\\obj\\",
+      "outputPath": "E:\\مشاريع\\Trend_Fashion_Strore\\Trend-Fashion-repo\\Trend_Fashion_Strore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

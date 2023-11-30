@@ -59,21 +59,24 @@
     <p id="product-description" style="text-align: justify;margin-top:120px;position:absolute">Product Description</p>
     <p id="product-price" style="position:absolute;text-align: right; color: green; font-weight: bold;margin-top:120px;margin-left:48%">Product Price</p>
 
-   
+
 
     <select id="size-select" style="width: 100%; margin-bottom: 10px;margin-top:160px">
         @if (ViewBag.sizeColor != null)
         {
+            var sizeList = new List<string>();
             foreach (var item in ViewBag.sizeColor)
             {
-                <option value="@item.SizeId">@item.Size.SizeName</option>
-                
+                if (!sizeList.Contains(item.Size.SizeName))
+                {
+                    <option value="@item.SizeId">@item.Size.SizeName</option>
+                    sizeList.Add(item.Size.SizeName);
+                }
             }
-            
+
         }
-       
-            
-        
+
+
     </select>
 
     <select id="color-select" asp-items="@colorName" style="width: 100%; margin-bottom: 10px;">
