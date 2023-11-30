@@ -1,0 +1,166 @@
+﻿
+<style>
+    #product-container {
+        width: 30%;
+        height: 100vh; /* تمت إضافة هذا السطر */
+        float: right;
+    }
+
+    #image-container {
+        position: relative;
+        height: 100vh; /* تمت إضافة هذا السطر */
+    }
+
+    #thumbnail-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .thumbnail {
+        display: block;
+        width: 10%;
+        height: 10%;
+        cursor: pointer;
+    }
+
+    #main-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        margin: auto;
+    }
+
+    #product-card {
+        width: 67%;
+        height: 68vh; /* تمت إضافة هذا السطر */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.20);
+        padding: 20px;
+        margin: 10px auto;
+        float: left;
+    }
+</style>
+<br />
+<br />
+
+
+@{
+    var prodImages = ViewData["Images"] as IEnumerable<ProductImage>;
+    var prodImageList = prodImages?.ToList();
+   
+    var colorName = new SelectList(prodImageList, "ProductColor", "ProductColor");
+}
+
+
+<div id="product-card">
+    <h1 id="product-title" style="text-align: center;">عنوان المنتج</h1>
+    <p id="product-description" style="text-align: justify;margin-top:120px;position:absolute">Product Description</p>
+    <p id="product-price" style="position:absolute;text-align: right; color: green; font-weight: bold;margin-top:120px;margin-left:48%">Product Price</p>
+
+   
+
+    <select id="size-select" style="width: 100%; margin-bottom: 10px;margin-top:160px">
+        @if (ViewBag.sizeColor != null)
+        {
+            foreach (var item in ViewBag.sizeColor)
+            {
+                <option value="@item.SizeId">@item.Size.SizeName</option>
+                
+            }
+            
+        }
+       
+            
+        
+    </select>
+
+    <select id="color-select" asp-items="@colorName" style="width: 100%; margin-bottom: 10px;">
+        
+    </select>
+
+
+    <input type="text" id="color-select" style="text-align:right;width: 100%; margin-bottom: 10px;" placeholder="الكميه" />
+
+    
+    <button id="add-to-cart-button" style="margin-top:10px;width: 100%; background-color: darkslategray; color: white; padding: 10px 0; border: none; cursor: pointer;">اضافة الى السلة</button>
+</div>
+
+@{
+   
+
+    // string? image0 = prodImageList?.Where(x => x.ImageName == "Image0").Select(x => x.ImagePath).FirstOrDefault();
+    // string? image1 = prodImageList?.Where(x => x.ImageName == "Image1").Select(x => x.ImagePath).FirstOrDefault();
+    // string? image2 = prodImageList?.Where(x => x.ImageName == "Image2").Select(x => x.ImagePath).FirstOrDefault();
+    // string? image3 = prodImageList?.Where(x => x.ImageName == "Image3").Select(x => x.ImagePath).FirstOrDefault();
+
+    var image0 = prodImageList?.Where(x => x.ImageName == "image0").FirstOrDefault();
+    var image1 = prodImageList?.Where(x => x.ImageName == "image1").FirstOrDefault();
+    var image2 = prodImageList?.Where(x => x.ImageName == "image2").FirstOrDefault();
+    var image3 = prodImageList?.Where(x => x.ImageName == "image3").FirstOrDefault();
+    var image4 = prodImageList?.Where(x => x.ImageName == "image4").FirstOrDefault();
+   
+   
+   
+
+
+}
+
+
+
+
+<div id="product-container">
+    <div id="image-container">
+        <div id="thumbnail-container">
+            @{
+                if (image1 != null)
+                {
+                    <img class="thumbnail" src="@Url.Content(image1.ImagePath)" alt="Thumbnail 1" onclick="changeImage(this)" onerror="handleImageError(this)">
+                }
+
+                if (image2 != null)
+                {
+                    <img class="thumbnail" src="@Url.Content(image2.ImagePath)" alt="Thumbnail 2" onclick="changeImage(this)" onerror="handleImageError(this)">
+                }
+
+                if (image3 != null)
+                {
+                    <img class="thumbnail" src="@Url.Content(image3.ImagePath)" alt="Thumbnail 3" onclick="changeImage(this)" onerror="handleImageError(this)">
+                }
+
+                if (image4 != null)
+                {
+                    <img class="thumbnail" src="@Url.Content(image4.ImagePath)" alt="Thumbnail 4" onclick="changeImage(this)" onerror="handleImageError(this)">
+                }
+
+               
+
+
+            }
+           @*  <img class="thumbnail" src="@Url.Content(image1.ImagePath)" alt="Thumbnail 1" onclick="changeImage(this)" onerror="handleImageError(this)" >
+            <img class="thumbnail" src="@Url.Content(image2.ImagePath)" alt="Thumbnail 2" onclick="changeImage(this)" onerror="handleImageError(this)" >
+            <img class="thumbnail" src="@Url.Content(image3.ImagePath)" alt="Thumbnail 3" onclick="changeImage(this)" onerror="handleImageError(this)">
+            <img class="thumbnail" src="@Url.Content(image4.ImagePath)" alt="Thumbnail 4" onclick="changeImage(this)" onerror="handleImageError(this)" >
+     *@   
+ </div>
+        <img id="main-image" src="@Url.Content(image0.ImagePath)" alt="Product Image" onerror="handleImageError(this)">
+    </div>
+</div>
+
+<script>
+    function handleImageError(img) {
+        // إخفاء الصورة عند فشل التحميل
+        img.style.display = 'none';
+    }
+</script>
+
+
+<script>
+    function changeImage(imageElement) {
+        var mainImage = document.getElementById('main-image');
+        var tempSrc = mainImage.src;
+        mainImage.src = imageElement.src;
+        imageElement.src = tempSrc;
+    }
+</script>

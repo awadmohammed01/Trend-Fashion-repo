@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Trend_Fashion_Strore</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Trend_Fashion_Strore.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="@Url.Action("Index","Home")">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><img src="~/Icon/BasketIcon.png" style="width:25px;height:25px" />السلة @ViewBag.prodnum</a>
+                        </li>
+
+                        @if (ViewBag.CustomerName != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> @ViewBag.CustomerName</a>
+                            </li>
+
+                            <li class="nav-item">
+
+                                <form asp-action="LoginOut" asp-controller="Accounts" method="post">
+                                    <input type="submit" value="Login Out" class="nav-link" />
+                                </form>
+
+                            </li>
+
+                        }
+                        else
+                        {
+                           @*  <li class="nav-item">
+                                <button class="nav-link" style="border:none" data-bs-toggle="modal" data-bs-target="#exampleModal"> SignUp</button>
+
+                            </li> *@
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" style="border:none" href="@Url.Action("Create","Accounts")"> SignUp</a>
+
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a class="nav-link" style="border:none" href="@Url.Action("Login","Accounts")"> login</a>
+
+                            </li>
+
+                        }
+
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <style>
+
+            .subnav {
+                display: flex;
+                justify-content: space-around;
+                overflow: hidden;
+                background-color: #666;
+            }
+
+                .subnav a {
+                    color: #f2f2f2;
+                    text-align: center;
+                    padding: 14px 16px;
+                    text-decoration: none;
+                }
+
+                    .subnav a:hover {
+                        background-color: #ddd;
+                        color: black;
+                    }
+        </style>
+        <div class="subnav">
+            <a href="#الأولاد">الأولاد</a>
+            <a href="#البنات">البنات</a>
+            <a href="#الرجال">الرجال</a>
+            <a href="#النساء">النساء</a>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+
+           @*  <!--singup modal-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">انشاء تسجيل دخول </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <i class="fa-solid fa-xmark text-danger"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <partial name="_CreateAccount" model="new Account()" />
+                        </div>
+
+                    </div>
+                </div>
+            </div> *@
+
+
+            @* <!--login modal-->
+            <div class="modal fade" id="exampleModallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">تسجيل الدخول </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <i class="fa-solid fa-xmark text-danger"></i>
+            </button>
+            </div>
+            <div class="modal-body">
+            <partial name="_login" model="new Customer()" />
+            </div>
+
+            </div>
+            </div>
+            </div> *@
+
+
+
+
+
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - SHEIN_YEMEN - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

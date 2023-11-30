@@ -1,0 +1,224 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (TempData["faled"] != null)
+{
+    <h4>@TempData["faled"]</h4>
+}
+
+@if (TempData["errorlogin"] != null)
+{
+    <h4>@TempData["errorlogin"]</h4>
+}
+
+
+<div class="container">
+
+    <style>
+        img {
+            width: 300px;
+            height: 380px;
+        }
+
+        .image-container {
+            display: flex;
+        }
+
+            .image-container img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin: 10px;
+                object-fit: cover;
+            }
+
+            .image-container p {
+                text-align: center;
+                margin: 5px;
+            }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+
+    <div style="margin-top:5%">
+
+        <!-- Section 1 -->
+        <div style="display:inline-block">
+            <a href="@Url.Action("Index","Product",new{categorize="ملابس النساء"})" style="text-align:center">
+                <img src="~/Images/womens-capsule.jpg" alt="ملابس النساء" class="img-fluid">
+                <p class="text-center" style="margin-top:-20%;color:White;">ملابس نساء عالية الجودة</p>
+            </a>
+        </div>
+
+        <div style="display:inline-block;margin-left:5%">
+            <a href="@Url.Action("Index","Product",new{categorize="ملابس الاولاد"})" style="text-align:center">
+                <img src="~/Images/boys-outfits.jpg" alt="ملابس الأولاد" class="img-fluid">
+                <p class="text-center" style="margin-top:-20%;color:White;">ملابس أولاد</p>
+            </a>
+        </div>
+
+        <div style="display:inline-block;margin-left:5%">
+            <a href="@Url.Action("Index","Product",new{categorize="ملابس البنات"})" style="text-align:center">
+                <img src="~/Images/girls-winter-dresses.jpg" alt="ملابس البنات" class="img-fluid">
+                <p class="text-center" style="margin-top:-20%;color:White;">ملابس بنات</p>
+            </a>
+        </div>
+
+        <br />
+
+        <!-- Section 2 -->
+        <div class="image-container" style="margin-top:10%">
+            <!-- Start-->
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/girls-winter-dresses.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <!-- .. End ... -->
+        </div>
+
+        <br />
+
+        <!-- Section 3 -->
+        <div class="image-container" style="margin-top:10%">
+            <!-- Repeat this block for each image -->
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+
+            <div>
+                <img src="~/Images/adidas-data.jpg" alt="صورة 1">
+                <p>نص تحت الصورة 1</p>
+            </div>
+            <!-- ... Repeat for other images ... -->
+        </div>
+
+        <br />
+
+        <!-- Section 4 -->
+        <div style="margin-top:5%">
+            <div style="display:inline-block">
+                <a style="text-align:center">
+                    <img src="~/Images/womens-capsule.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس نساء عالية الجودة</p>
+                </a>
+            </div>
+
+            <div style="display:inline-block;margin-left:5%;">
+                <a style="text-align:center">
+                    <img src="~/Images/boys-outfits.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس أولاد</p>
+                </a>
+            </div>
+
+            <div style="display:inline-block;margin-left:5%">
+                <a style="text-align:center">
+                    <img src="~/Images/girls-winter-dresses.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس بنات</p>
+                </a>
+            </div>
+        </div>
+
+        <br />
+
+        <!-- Section 5 -->
+        <div style="margin-top:5%;">
+            <div style="display:inline-block">
+                <a style="text-align:center">
+                    <img src="~/Images/womens-capsule.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس نساء عالية الجودة</p>
+                </a>
+            </div>
+
+            <div style="display:inline-block;margin-left:5%">
+                <a style="text-align:center">
+                    <img src="~/Images/boys-outfits.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس أولاد</p>
+                </a>
+            </div>
+
+            <div style="display:inline-block;margin-left:5%">
+                <a style="text-align:center">
+                    <img src="~/Images/girls-winter-dresses.jpg" alt="ملابس الأولاد" class="img-fluid">
+                    <p class="text-center" style="margin-top:-20%;color:White;">ملابس بنات</p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>

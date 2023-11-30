@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+@model IEnumerable<Product>
+
+<div class="container">
+    <style>
+        img {
+            width: 300px;
+            height: 380px;
+        }
+    </style>
+
+    @{
+        var prodImage = ViewData["P"] as IEnumerable<ProductImage>;
+        var prodImageList = prodImage?.ToList(); // تحويل إلى List لإغلاق DataReader
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            var path = prodImageList?.Where(x => x.ProductId == item.ProductId && x.ImageName=="image0").FirstOrDefault();
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="750">
+                <a href="@Url.Action("ProductDetails",new{ProductId=item.ProductId})" style="text-align:right">
+                    @if (path != null)
+                    {
+                       // <h1>@path.ImagePath</h1>
+
+                        <img src="@Url.Content(path.ImagePath)" alt="Image" />
+                    }
+
+                    <p style="text-align: right;">@item.Name</p>
+                    <p style="text-align: right;">@(item.Cost + item.ProfitMargin) RS</p>
+                </a>
+            </div>
+        }
+    </div>
+</div>
