@@ -28,17 +28,7 @@ namespace Trend_Fashion_Strore.Controllers._api
             return Ok(products);
         }
 
-        // هذه الوظيفة تعيد المنتجات حسب الفئة
-        //[HttpGet("{Category}")]
-        //public async Task<IActionResult> GetProductsByCategory(string Category)
-        //{
-        //    // الحصول على المنتجات حسب الفئة من قاعدة البيانات
-        //    //var products = await _context.ProductImages.Include(x => x.product).Where(x => x.product.Categorize == Category).ToListAsync();
-        //    //return Ok(products);
-
-        //    var product = await _context.Products.Where(x => x.Categorize == Category).ToListAsync();
-        //    return Ok(product);
-        //}
+    
 
         // هذه الوظيفة تعيد المنتجات حسب الفئة
         [HttpGet("{Category}")]
@@ -60,10 +50,11 @@ namespace Trend_Fashion_Strore.Controllers._api
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<IEnumerable<ProductImage>>> GetProductImages(int id)
+        // GET: api/ProductImages/5
+        [HttpGet("GetProductImages/{id}")]
+        public async Task<IActionResult> GetProductImages(int id)
         {
-            var productImage=  await _context.ProductImages.Where(p => p.ProductId == id).ToListAsync();
+            var productImage= await _context.ProductImages.Where(p => p.ProductId == id).ToListAsync();
 
             return Ok(productImage);
         }

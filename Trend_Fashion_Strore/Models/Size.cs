@@ -13,12 +13,5 @@ namespace Trend_Fashion_Strore.Models
         [Required]
         public string? SizeName { get; set; }
 
-       
-
-
-       
-
-
-
     }
 }

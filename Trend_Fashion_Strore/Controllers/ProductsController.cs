@@ -72,26 +72,23 @@ namespace Trend_Fashion_Strore.Controllers
 
 
 
-            IEnumerable<ProductImage> images = _context.ProductImages.Where(x=>x.ProductId==ProductId).ToList();
-            ViewData["Images"] = images;
 
-            var sizeColor = _context.ProductColorsAndSizes.Include(x=>x.Size).Include(x=>x.Color).Where(x => x.ProductId == ProductId).Distinct().ToList();
-
+            // Get the product details from the database
+            var product =  _context.Products.Find(7);
            
-           
-            ViewBag.sizeColor = sizeColor;
+
+            // Get the product colors and sizes from the database
+            var productColorsAndSizes =  _context.ProductColorsAndSizes
+                .Include(p => p.Color)
+                .Include(p => p.Size)
+                .Where(p => p.ProductId == 7)
+                .ToList();
+
+            // Create select lists for the colors and sizes
+            ViewBag.ColorSelect = new SelectList(productColorsAndSizes.Select(p => p.Color).Distinct(), "ColorId", "ColorName");
+            ViewBag.SizeSelect = new SelectList(productColorsAndSizes.Select(p => p.Size).Distinct(), "SizeId", "SizeName");
 
 
-
-
-            //if(sizeColor!= null)
-            //{
-                
-
-
-            //    var SizeList = new SelectList(sizeColor, "ProductColor", "ProductColor");
-            //}
-            
 
 
 

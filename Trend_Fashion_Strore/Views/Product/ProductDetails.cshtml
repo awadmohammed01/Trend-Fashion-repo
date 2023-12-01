@@ -1,35 +1,6 @@
-﻿
+﻿@* 
 <style>
-    #product-container {
-        width: 30%;
-        height: 100vh; /* تمت إضافة هذا السطر */
-        float: right;
-    }
-
-    #image-container {
-        position: relative;
-        height: 100vh; /* تمت إضافة هذا السطر */
-    }
-
-    #thumbnail-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    .thumbnail {
-        display: block;
-        width: 10%;
-        height: 10%;
-        cursor: pointer;
-    }
-
-    #main-image {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin: auto;
-    }
+   
 
     #product-card {
         width: 67%;
@@ -46,12 +17,7 @@
 <br />
 
 
-@{
-    var prodImages = ViewData["Images"] as IEnumerable<ProductImage>;
-    var prodImageList = prodImages?.ToList();
-   
-    var colorName = new SelectList(prodImageList, "ProductId", "ProductColor");
-}
+
 
 
 <div id="product-card">
@@ -142,11 +108,7 @@
 
 
             }
-           @*  <img class="thumbnail" src="@Url.Content(image1.ImagePath)" alt="Thumbnail 1" onclick="changeImage(this)" onerror="handleImageError(this)" >
-            <img class="thumbnail" src="@Url.Content(image2.ImagePath)" alt="Thumbnail 2" onclick="changeImage(this)" onerror="handleImageError(this)" >
-            <img class="thumbnail" src="@Url.Content(image3.ImagePath)" alt="Thumbnail 3" onclick="changeImage(this)" onerror="handleImageError(this)">
-            <img class="thumbnail" src="@Url.Content(image4.ImagePath)" alt="Thumbnail 4" onclick="changeImage(this)" onerror="handleImageError(this)" >
-     *@   
+       
  </div>
         <img id="main-image" src="@Url.Content(image0.ImagePath)" alt="Product Image" onerror="handleImageError(this)">
     </div>
@@ -168,3 +130,132 @@
         imageElement.src = tempSrc;
     }
 </script>
+
+
+ *@
+
+
+<style>
+    .container {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin-top:20px;
+        width:100%;
+        border:none;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-end;
+        width: 400px;
+        border: none;
+        display: inline-block;
+        margin-left:30px;
+    }
+
+    .product-main-image {
+        width: 300px;
+        height: 380px;
+    }
+
+    .thumbnails {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-right: 10px;
+        position:absolute;
+    }
+
+    .product-thumbnail {
+        width: 50px;
+        height: 50px;
+        margin-bottom: -10px;
+        
+    }
+
+    #product-card {
+        width:800px;
+       
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 6px 0px rgba(0,0,0,0.20);
+        padding: 20px;
+        margin-left: 10px;
+        display: inline-block;
+        
+        
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+        <div class="thumbnails">
+            <!-- Thumbnails will be added here dynamically -->
+        </div>
+        <img class="product-main-image" src="" alt="Main Image">
+    </div>
+
+    <div id="product-card">
+        <h1 id="product-title" style="text-align: center;">عنوان المنتج</h1>
+        <p id="product-description" style="text-align: justify;">Product Description</p>
+        <p id="product-price" style="text-align: right; color: green; font-weight: bold;">Product Price</p>
+
+        <select id="size-select" asp-items="ViewBag.SizeSelect" style="width: 100%; margin-bottom: 10px;">
+          
+        </select>
+
+        
+
+        <select id="color-select" asp-items="ViewBag.ColorSelect" style="width: 100%; margin-bottom: 10px;"></select>
+        <input type="text" id="color-select" style="text-align:right;width: 100%; margin-bottom: 10px;" placeholder="الكميه" />
+        <button id="add-to-cart-button" style="width: 100%; background-color: darkslategray; color: white; padding: 10px 0; border: none; cursor: pointer;">اضافة الى السلة</button>
+    </div>
+</div>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<script>
+    $(document).ready(function () {
+        // Get the product images from the server
+        $.ajax({
+            url: "/api/Products/GetProductImages/7",
+            type: "GET",
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                // Find the main image (image0) and set it as the source for the main image element
+                var mainImage = data.filter(image => image.imageName === "image0")[0].imagePath;
+                $(".product-main-image").attr("src", mainImage);
+
+                // For each of the other images, create a new thumbnail element and append it to the thumbnails div
+                data.filter(image => image.imageName !== "image0").forEach(image => {
+                    $(".thumbnails").append('<img class="product-thumbnail" src="' + image.imagePath + '" alt="' + image.imageName + '">');
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                // If an error occurs, log the error message
+                console.error("An error occurred: ", textStatus, ", ", errorThrown);
+                alert("حدث خطأ أثناء تحميل البيانات. يرجى التحقق من الخادم والاتصال بالإنترنت.");
+            }
+        });
+
+        // When a thumbnail is clicked, swap its source with the source of the main image
+        $(document).on("click", ".product-thumbnail", function () {
+            var mainImage = $(".product-main-image").attr("src");
+            var thumbnailImage = $(this).attr("src");
+            $(".product-main-image").attr("src", thumbnailImage);
+            $(this).attr("src", mainImage);
+        });
+    });
+
+</script>
+
+
