@@ -23,7 +23,7 @@ namespace Trend_Fashion_Strore.Controllers
 
         public async Task<IActionResult> Index()
         {
-            //static code -------------------------
+            //chick temp account code -------------------------
 
             var tempCustomer = await _context.TempAccountInfos.FindAsync(1);
 

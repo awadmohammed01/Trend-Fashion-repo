@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout2.cshtml";
 }
 
-@model IEnumerable<Product>
+@* @model IEnumerable<Product>
 
 <div class="container">
     <style>
@@ -39,3 +39,124 @@
         }
     </div>
 </div>
+ *@
+
+@* <div class="container">
+    <style>
+        img {
+            width: 300px;
+            height: 380px;
+        }
+    </style>
+
+    <div class="row" id="products">
+        <!-- سيتم ملء هذا الجزء بواسطة jQuery -->
+    </div>
+
+    <script src="ttps://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.ajax({
+                url: '/api/ProductsController/GetProducts/1', // استبدل هذا بالمسار الصحيح للوظيفة API الخاصة بك
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(index, productImage) {
+                        var product = productImage.product;
+                        var html = '<div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="750">';
+                        html += '<a href="" style="text-align:right">';
+                        html += '<img src="' + productImage.ImagePath + '" alt="Image" />';
+                        html += '<p style="text-align: right;">' + product.Name + '</p>';
+                        html += '<p style="text-align: right;">' + (product.Cost + product.ProfitMargin) + ' RS</p>';
+                        html += '</a></div>';
+                        $('#products').append(html);
+                    });
+                },
+                error: function() {
+                    alert('حدث خطأ أثناء تحميل البيانات.');
+                }
+            });
+        });
+    </script>
+</div> *@
+
+
+@* <div class="container">
+    <div id="products" class="row"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var category = 'ملابس الاولاد';
+        var safeCategory = encodeURIComponent(category);
+        var url = '/api/Products/' + safeCategory;
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (index, product) {
+                    var html = '<div class="col-md-4">';
+                    html += '<div class="card m-3" style="width: 18rem;">';
+                    html += '<div class="card-body">';
+                    html += '<h5 class="card-title">' + product.name + '</h5>';
+                    html += '<p class="card-text">السعر: ' + product.cost + product.profitMargin + '</p>';
+                    // html += '<a href="#" class="btn btn-primary">Go somewhere</a>';
+                    html += '</div></div></div>';
+                    $('#products').append(html);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('حدث خطأ أثناء تحميل البيانات: ' + textStatus + ', ' + errorThrown);
+            }
+        });
+    });
+</script>
+ *@
+
+ 
+
+
+<div class="container">
+    <div id="products" class="row" data-category="@ViewBag.Categorey"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var category = $('#products').data('category');
+        var safeCategory = encodeURIComponent(category);
+        var url = '/api/Products/' + safeCategory;
+
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                $.each(data, function (index, product) {
+                    var html = '<div class="col-md-4">';
+                    html += '<a href="/Product/ProductDetails/' + product.prodId + '" style="color: inherit; text-decoration: none;">';
+                    html += '<div class="card m-3" style="width: 300px; height: 380px; background-image: url(' + product.imagePath + '); background-size: cover; position: relative; border: 0px solid black;">'; // تمت إضافة الخاصية border: 1px solid black; هنا
+                    html += '<div class="card-body text-right" style="position: absolute; bottom: 0; right: 0; color: white; text-shadow: 1px 1px black;">'; // تمت إضافة الخاصيتين color: white; و text-shadow: 2px 2px black; هنا
+                    html += '<h5 class="card-title">' + product.name + '</h5>';
+                    html += '<p class="card-text">السعر: ' + product.cost + product.profitMargin + '</p>';
+                    html += '</div></div>';
+                    html += '</a>';
+                    html += '</div>';
+                    $('#products').append(html);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert('حدث خطأ أثناء تحميل البيانات: ' + textStatus + ', ' + errorThrown);
+            }
+        });
+    });
+
+
+
+
+</script>
+
+

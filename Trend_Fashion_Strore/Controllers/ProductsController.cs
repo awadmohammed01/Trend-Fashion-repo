@@ -21,6 +21,7 @@ namespace Trend_Fashion_Strore.Controllers
 
         public IActionResult Index(string categorize)
         {
+            //check tem account ------------------------------
             var TempAccount=_context.TempAccountInfos.Find(1);
 
             if(TempAccount !=null  && TempAccount.AccountId==1)
@@ -30,15 +31,18 @@ namespace Trend_Fashion_Strore.Controllers
                 return RedirectToAction("Login", "Accounts");
             }
 
+            //-------------------------------------------------
+
             if(ModelState.IsValid)
             {
-                IEnumerable<Product> product = _context.Products.Where(x => x.Categorize == categorize);
+                //IEnumerable<Product> product = _context.Products.Where(x => x.Categorize == categorize);
 
 
-                IEnumerable<ProductImage> productImage = _context.ProductImages;
-                ViewData["P"] = productImage;
+                //IEnumerable<ProductImage> productImage = _context.ProductImages;
+                //ViewData["P"] = productImage;
 
-                return View(product);
+                ViewBag.Categorey = categorize;
+                return View();
             }
 
             return RedirectToAction("Index", "Home");

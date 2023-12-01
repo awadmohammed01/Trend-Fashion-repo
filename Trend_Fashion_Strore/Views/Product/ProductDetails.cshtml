@@ -50,7 +50,7 @@
     var prodImages = ViewData["Images"] as IEnumerable<ProductImage>;
     var prodImageList = prodImages?.ToList();
    
-    var colorName = new SelectList(prodImageList, "ProductColor", "ProductColor");
+    var colorName = new SelectList(prodImageList, "ProductId", "ProductColor");
 }
 
 
@@ -117,6 +117,7 @@
     <div id="image-container">
         <div id="thumbnail-container">
             @{
+
                 if (image1 != null)
                 {
                     <img class="thumbnail" src="@Url.Content(image1.ImagePath)" alt="Thumbnail 1" onclick="changeImage(this)" onerror="handleImageError(this)">
