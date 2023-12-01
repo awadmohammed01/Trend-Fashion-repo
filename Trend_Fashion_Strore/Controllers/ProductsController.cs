@@ -52,7 +52,7 @@ namespace Trend_Fashion_Strore.Controllers
 
 
 
-        public IActionResult ProductDetails(int ProductId)
+        public IActionResult ProductDetails(int id)
         {
             //TempAccount code -------------------------
 
@@ -74,19 +74,20 @@ namespace Trend_Fashion_Strore.Controllers
 
 
             // Get the product details from the database
-            var product =  _context.Products.Find(7);
+            var product =  _context.Products.Find(id);
            
 
             // Get the product colors and sizes from the database
             var productColorsAndSizes =  _context.ProductColorsAndSizes
                 .Include(p => p.Color)
                 .Include(p => p.Size)
-                .Where(p => p.ProductId == 7)
+                .Where(p => p.ProductId == id)
                 .ToList();
 
             // Create select lists for the colors and sizes
             ViewBag.ColorSelect = new SelectList(productColorsAndSizes.Select(p => p.Color).Distinct(), "ColorId", "ColorName");
             ViewBag.SizeSelect = new SelectList(productColorsAndSizes.Select(p => p.Size).Distinct(), "SizeId", "SizeName");
+            ViewBag.Product = product;
 
 
 

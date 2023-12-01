@@ -199,9 +199,9 @@
     </div>
 
     <div id="product-card">
-        <h1 id="product-title" style="text-align: center;">عنوان المنتج</h1>
-        <p id="product-description" style="text-align: justify;">Product Description</p>
-        <p id="product-price" style="text-align: right; color: green; font-weight: bold;">Product Price</p>
+        <h1 id="product-title" style="text-align: center;">@ViewBag.Product.Name</h1>
+        <p id="product-description" style="text-align: justify;">الوصف :@ViewBag.Product.Note</p>
+        <p id="product-price" style="text-align: right; color: green; font-weight: bold;">@(ViewBag.Product.Cost + ViewBag.Product.ProfitMargin)</p>
 
         <select id="size-select" asp-items="ViewBag.SizeSelect" style="width: 100%; margin-bottom: 10px;">
           
