@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trend_Fashion_Strore")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b275c000288d4724c167483f75ae4d11024b2128")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23fd5c8e84538de7e543ecd122bf92a21fff5078")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trend_Fashion_Strore")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trend_Fashion_Strore")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

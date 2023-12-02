@@ -18,6 +18,20 @@ namespace Trend_Fashion_Strore.Models
         [ForeignKey(nameof(ProductId))]
         public Product? Product { get; set; } // Navigation property to Product
 
+        [Required]
+        [DisplayName("اللون")]
+        public int? ColorId { get; set; } // Foreign Key part 1
+        [DisplayName("اللون")]
+        [ForeignKey(nameof(ColorId))]
+        public Color? Color { get; set; } // Navigation property to Product
+
+        [Required]
+        [DisplayName("المقاس")]
+        public int? SizeId { get; set; } // Foreign Key part 1
+        [DisplayName("المقاس")]
+        [ForeignKey(nameof(SizeId))]
+        public Size? Size { get; set; } // Navigation property to Product
+
 
         [Required]
         [DisplayName("الكميه")]

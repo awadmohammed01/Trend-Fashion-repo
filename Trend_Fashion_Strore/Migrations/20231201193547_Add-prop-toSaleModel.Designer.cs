@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Trend_Fashion_Strore.Data;
 
@@ -11,9 +12,11 @@ using Trend_Fashion_Strore.Data;
 namespace Trend_Fashion_Strore.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231201193547_Add-prop-toSaleModel")]
+    partial class AddproptoSaleModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,14 +87,8 @@ namespace Trend_Fashion_Strore.Migrations
                     b.Property<double?>("Discount")
                         .HasColumnType("float");
 
-                    b.Property<double?>("MoneyTransformNum")
-                        .HasColumnType("float");
-
                     b.Property<string>("Note")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool?>("PaymentVerification")
-                        .HasColumnType("bit");
 
                     b.Property<bool?>("SaveStatus")
                         .HasColumnType("bit");

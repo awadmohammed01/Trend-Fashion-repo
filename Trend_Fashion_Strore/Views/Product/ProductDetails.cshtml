@@ -203,14 +203,9 @@
         <p id="product-description" style="text-align: justify;">الوصف :@ViewBag.Product.Note</p>
         <p id="product-price" style="text-align: right; color: green; font-weight: bold;">@(ViewBag.Product.Cost + ViewBag.Product.ProfitMargin)</p>
 
-        <select id="size-select" asp-items="ViewBag.SizeSelect" style="width: 100%; margin-bottom: 10px;">
-          
-        </select>
-
-        
-
+        <select id="size-select" asp-items="ViewBag.SizeSelect" style="width: 100%; margin-bottom: 10px;"></select>
         <select id="color-select" asp-items="ViewBag.ColorSelect" style="width: 100%; margin-bottom: 10px;"></select>
-        <input type="text" id="color-select" style="text-align:right;width: 100%; margin-bottom: 10px;" placeholder="الكميه" />
+        <input type="text" id="quantity" style="text-align:right;width: 100%; margin-bottom: 10px;" placeholder="الكميه" />
         <button id="add-to-cart-button" style="width: 100%; background-color: darkslategray; color: white; padding: 10px 0; border: none; cursor: pointer;">اضافة الى السلة</button>
     </div>
 </div>
@@ -254,8 +249,41 @@
             $(".product-main-image").attr("src", thumbnailImage);
             $(this).attr("src", mainImage);
         });
-    });
 
+        $("#add-to-cart-button").click(function () {
+            var productId = @ViewBag.Product.ProductId;
+            var colorId = $("#color-select").val();
+            var sizeId = $("#size-select").val();
+            var quantity = $("#quantity").val();
+            var price = @(ViewBag.Product.Cost + ViewBag.Product.ProfitMargin);
+            var basketId = @ViewBag.BasketId;
+
+            var sale = {
+                ProductId: productId,
+                ColorId: colorId,
+                SizeId: sizeId,
+                Quantity: quantity,
+                Price: price,
+                BasektId: basketId
+            };
+
+            $.ajax({
+                url: "/api/Sales",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(sale),
+                success: function (data) {
+                    alert("تمت إضافة المنتج إلى السلة بنجاح!");
+                    $("nav.navbar").load(location.href + " nav.navbar>*", "");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.error("An error occurred: ", textStatus, ", ", errorThrown);
+                    alert("حدث خطأ أثناء إضافة المنتج إلى السلة. يرجى التحقق من الخادم والاتصال بالإنترنت.");
+                }
+            });
+        });
+    });
 </script>
+
 
 

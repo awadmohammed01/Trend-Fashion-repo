@@ -65,6 +65,7 @@ namespace Trend_Fashion_Strore.Controllers
 
                 var prodnum = _context.Sales.Where(x => x.BasektId == tempCustomer.BasketId).Count();
                 ViewBag.prodnum = prodnum;
+                ViewBag.BasketId = tempCustomer.BasketId;
             }
 
 

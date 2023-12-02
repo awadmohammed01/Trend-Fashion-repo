@@ -37,7 +37,7 @@
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="~/Icon/BasketIcon.png" style="width:25px;height:25px" />السلة @ViewBag.prodnum</a>
+                            <a class="nav-link" href="@Url.Action("TempBasket","Baskets",new{id=ViewBag.BasketId})"><img src="~/Icon/BasketIcon.png" style="width:25px;height:25px" />السلة @ViewBag.prodnum</a>
                         </li>
 
                         @if (ViewBag.CustomerName != null)

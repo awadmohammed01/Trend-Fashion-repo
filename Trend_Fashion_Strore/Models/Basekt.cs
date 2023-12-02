@@ -34,9 +34,16 @@ namespace Trend_Fashion_Strore.Models
 
         public DateTime? UpdatedAt { get; set; }
 
+        [DisplayName("رقم الحواله الماليه")]
+        public  double? MoneyTransformNum { get; set; }
 
         [DisplayName("حاله الحفظ")]
         public bool? SaveStatus { get; set; }
+
+        [DisplayName("التحقق من الدفع")]
+        public bool? PaymentVerification { get; set; }
+
+
 
     }
 }
