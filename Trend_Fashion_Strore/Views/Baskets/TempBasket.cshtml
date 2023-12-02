@@ -1,114 +1,40 @@
-﻿@{
-    ViewData["Title"] = "TempBasket";
-}
-
-<!-- الجدول الذي يعرض تفاصيل السلة -->
-<table id="basket-details">
-    <thead>
-        <tr>
-            <th>رقم السلة</th>
-            <th>رقم الحساب</th>
-            <th>الخصم</th>
-            <th>اجمالي المبلغ</th>
-            <th>ملاحظة</th>
-            <th>تاريخ الانشاء</th>
-            <th>تاريخ التعديل</th>
-            <th>رقم الحواله الماليه</th>
-            <th>حاله الحفظ</th>
-            <th>التحقق من الدفع</th>
-            <th>تأكيد الدفع</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- سيتم إضافة الصفوف هنا بشكل ديناميكي -->
-    </tbody>
-</table>
+﻿
 <br />
-<!-- الجدول الذي يعرض تفاصيل عمليات البيع -->
-<table id="sales-details">
-    <thead>
-        <tr>
-            <th>رقم البيع</th>
-            <th>رقم المنتج</th>
-            <th>رقم اللون</th>
-            <th>رقم الحجم</th>
-            <th>الكمية</th>
-            <th>السعر</th>
-            <th>رقم السلة</th>
-            <th>تعديل الكمية</th>
-            <th>حذف البيع</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- سيتم إضافة الصفوف هنا بشكل ديناميكي -->
-    </tbody>
-</table>
 
+<!-- HTML -->
+<table id="basketsTable" class="display" style="width:100%"></table>
+<table id="salesTable" class="display" style="width:100%"></table>
 
-<!-- النافذة المنبثقة لإدخال MoneyTransformNum -->
-<div id="payment-popup" style="display: none;">
-    <input type="text" id="money-transform-num" placeholder="أدخل رقم التحويل المالي هنا" />
-    <button>تأكيد الدفع</button>
-</div>
-
+<!-- jQuery -->
 <script>
     $(document).ready(function () {
-        // استبدل هذا بمعرف السلة الخاص بك
-        var basketId = '@ViewBag.BasketId';
-        // جلب تفاصيل السلة
-        $.ajax({
-            url: "/api/Baskets/" + 2,
-            type: "GET",
-            success: function (basket) {
-                // إضافة صف جديد إلى جدول تفاصيل السلة
-                $("#basket-details").append(
-                    "<tr>" +
-                    "<td>" + basket.BasketId + "</td>" +
-                    "<td>" + basket.AccountId + "</td>" +
-                    "<td>" + basket.Discount + "</td>" +
-                    "<td>" + basket.Total + "</td>" +
-                    "<td>" + basket.Note + "</td>" +
-                    "<td>" + basket.CreatedAt + "</td>" +
-                    "<td>" + basket.UpdatedAt + "</td>" +
-                    "<td>" + basket.MoneyTransformNum + "</td>" +
-                    "<td>" + basket.SaveStatus + "</td>" +
-                    "<td>" + basket.PaymentVerification + "</td>" +
-                    "<td><button class='confirm-payment'>تأكيد الدفع</button></td>" +
-                    "</tr>"
-                );
+        $('#basketsTable').DataTable({
+            "ajax": {
+                "url": "/api/Baskets/2",
+                "type": "GET",
+                "datatype": "json",
+                "dataSrc": "" // هنا
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error("An error occurred: ", textStatus, ", ", errorThrown);
-                alert("حدث خطأ أثناء جلب تفاصيل السلة. يرجى التحقق من الخادم والاتصال بالإنترنت.");
-            }
+            "columns": [
+                { "data": "basektId", "title": "رقم السلة" },
+                { "data": "accountId", "title": "رقم الحساب" },
+                // Add other columns as needed
+            ]
         });
 
-        // جلب تفاصيل عمليات البيع للسلة
-        $.ajax({
-            url: "/api/Baskets/" + 2 + "/Sales",
-            type: "GET",
-            success: function (sales) {
-                sales.forEach(function (sale) {
-                    // إضافة صف جديد إلى جدول تفاصيل عمليات البيع
-                    $("#sales-details").append(
-                        "<tr>" +
-                        "<td>" + sale.SaleId + "</td>" +
-                        "<td>" + sale.ProductId + "</td>" +
-                        "<td>" + sale.ColorId + "</td>" +
-                        "<td>" + sale.SizeId + "</td>" +
-                        "<td><input type='text' value='" + sale.Quantity + "' /></td>" +
-                        "<td>" + sale.Price + "</td>" +
-                        "<td>" + sale.BasketId + "</td>" +
-                        "<td><button class='update-quantity'>تعديل الكمية</button></td>" +
-                        "<td><button class='delete-sale'>حذف البيع</button></td>" +
-                        "</tr>"
-                    );
-                });
+        $('#salesTable').DataTable({
+            "ajax": {
+                "url": "/api/Sales/2",
+                "type": "GET",
+                "datatype": "json",
+                "dataSrc": "" // وهنا
             },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.error("An error occurred: ", textStatus, ", ", errorThrown);
-                alert("حدث خطأ أثناء جلب تفاصيل عمليات البيع. يرجى التحقق من الخادم والاتصال بالإنترنت.");
-            }
+            "columns": [
+                { "data": "saleId", "title": "رقم البيع" },
+                { "data": "productId", "title": "رقم المنتج" },
+                // Add other columns as needed
+            ]
         });
     });
+
 </script>

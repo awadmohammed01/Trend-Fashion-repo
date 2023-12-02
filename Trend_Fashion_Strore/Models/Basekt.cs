@@ -6,7 +6,6 @@ namespace Trend_Fashion_Strore.Models
 {
     public class Basekt
     {
-
         [Key]
         [DisplayName("رقم السلة")]
         public int BasektId { get; set; }
@@ -42,8 +41,6 @@ namespace Trend_Fashion_Strore.Models
 
         [DisplayName("التحقق من الدفع")]
         public bool? PaymentVerification { get; set; }
-
-
 
     }
 }

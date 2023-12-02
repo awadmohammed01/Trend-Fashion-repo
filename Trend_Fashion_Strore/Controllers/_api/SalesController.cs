@@ -17,6 +17,13 @@ namespace Trend_Fashion_Strore.Controllers._api
             _context = context;
         }
 
+        [HttpGet("{basketId}")]
+        public async Task<IActionResult> GetSales(int basketId)
+        {
+            var sales = await _context.Sales.Where(s => s.BasektId == basketId).ToListAsync();
+            return Ok(sales);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Sale>> PostSale(Sale sale)
         {
