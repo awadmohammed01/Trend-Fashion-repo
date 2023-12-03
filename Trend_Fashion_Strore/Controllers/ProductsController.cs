@@ -35,11 +35,14 @@ namespace Trend_Fashion_Strore.Controllers
 
             if(ModelState.IsValid)
             {
-                //IEnumerable<Product> product = _context.Products.Where(x => x.Categorize == categorize);
+                if (TempAccount != null && TempAccount.AccountId != 1)
+                {
+                    var custom = _context.Accounts.Find(TempAccount.AccountId);
+                    ViewBag.CustomerName = custom?.Name;
 
-
-                //IEnumerable<ProductImage> productImage = _context.ProductImages;
-                //ViewData["P"] = productImage;
+                    var prodnum = _context.Sales.Where(x => x.BasektId == TempAccount.BasketId).Count();
+                    ViewBag.prodnum = prodnum;
+                }
 
                 ViewBag.Categorey = categorize;
                 return View();
@@ -70,6 +73,9 @@ namespace Trend_Fashion_Strore.Controllers
 
 
             //--------------------------------------
+            //prodId-------------------
+
+            ViewBag.ProductId = id;
 
 
 

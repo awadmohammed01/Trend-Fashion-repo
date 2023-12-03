@@ -112,15 +112,15 @@ namespace Trend_Fashion_Strore.Controllers
                 {
                     var temCustomer = _context.TempAccountInfos.Where(x => x.TempId == 1).FirstOrDefault();
 
-                    // الشرط مجرد لتسريع قراءه الكود
-                    if (temCustomer != null && Customer != null)
+                    
+                    if (temCustomer != null && Customer != null &&Customer.UserType!="admin")
                     {
                         var existBasket = _context.Basekts.Where(x => x.AccountId == Customer.AccountId && x.SaveStatus != true).FirstOrDefault();
 
                         if (existBasket != null)
                         {
                             temCustomer.AccountId = Customer.AccountId;
-                            //هنا بمعنى سله ال billid
+                           
                             temCustomer.BasketId = existBasket.BasektId;
                             _context.Update(temCustomer);
                             await _context.SaveChangesAsync();
@@ -139,9 +139,9 @@ namespace Trend_Fashion_Strore.Controllers
                         }
 
 
+                        
 
-
-
+                       
 
 
 
@@ -149,6 +149,17 @@ namespace Trend_Fashion_Strore.Controllers
 
 
                     }
+
+
+                 else if (Customer != null && Customer.UserType == "admin")
+                 {
+                        temCustomer.AccountId = Customer.AccountId;
+                        _context.Update(temCustomer);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Index", "Baskets");
+
+                 }
+
 
 
                     return RedirectToAction("Index", "Home");
@@ -183,7 +194,7 @@ namespace Trend_Fashion_Strore.Controllers
             if (tempCustomer != null)
             {
                 tempCustomer.AccountId = 1;
-                tempCustomer.BasketId= 1;
+                tempCustomer.BasketId= 6;
                 _context.Update(tempCustomer);
                 _context.SaveChanges();
             }

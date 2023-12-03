@@ -14,6 +14,10 @@ namespace Trend_Fashion_Strore.Models
         public string? Name { get; set; }
 
         [Required]
+        [DisplayName("نوع المستخدم")]
+        public string? UserType { get; set; } = "User";
+
+        [Required]
         [DisplayName("حساب الحيميل")]
         public string? Email { get; set; }
 

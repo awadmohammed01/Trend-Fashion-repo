@@ -1,40 +1,189 @@
-﻿
+﻿<!-- HTML -->
+<label>تفاصيل السلة</label>
+<table id="basketsTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>رقم السلة</th>
+            <th>اسم العميل</th>
+            <th>الخصم</th>
+            <th>الاجمالي</th>
+            <th>ملاحظة</th>
+            <th></th> <!-- عمود جديد للزر -->
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
 <br />
 
-<!-- HTML -->
-<table id="basketsTable" class="display" style="width:100%"></table>
-<table id="salesTable" class="display" style="width:100%"></table>
+<label>تفاصيل المشتريات</label>
+<table id="salesTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            
+            <th>اسم المنتج</th>
+             <th>اللون</th>
+            <th>المقاس</th>
+            <th>الكميه</th>
+            <th>السعر</th>
+            <th>الاجمالي</th>
+            <th></th>
+            
+            <!-- Add other columns as needed -->
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
 
 <!-- jQuery -->
 <script>
     $(document).ready(function () {
+
+        var basketId = @ViewBag.BasketId;
+
         $('#basketsTable').DataTable({
-            "ajax": {
-                "url": "/api/Baskets/2",
-                "type": "GET",
-                "datatype": "json",
-                "dataSrc": "" // هنا
+            ajax: {
+                url: "/api/Baskets/" + basketId,
+                type: "GET",
+                datatype: "json",
+                dataSrc: ""
             },
-            "columns": [
-                { "data": "basektId", "title": "رقم السلة" },
-                { "data": "accountId", "title": "رقم الحساب" },
-                // Add other columns as needed
-            ]
+            columns: [
+                { data: "basektId" },
+                { data: "account.name" },
+                { data: "discount" },
+                { data: "total" },
+                { data: "note" },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<button class="btn-edit">تاكيد الدفع</button>'; // زر جديد
+                    }
+                }
+            ],
+            searching: false, // تعطيل مربع البحث
+            ordering: false, // تعطيل الفرز
+            paging: false, // تعطيل الصفحة
+            info: false // تعطيل معلومات الجدول
         });
 
         $('#salesTable').DataTable({
-            "ajax": {
-                "url": "/api/Sales/2",
-                "type": "GET",
-                "datatype": "json",
-                "dataSrc": "" // وهنا
+            ajax: {
+                url: "/api/Sales/" + basketId,
+                type: "GET",
+                datatype: "json",
+                dataSrc: ""
             },
-            "columns": [
-                { "data": "saleId", "title": "رقم البيع" },
-                { "data": "productId", "title": "رقم المنتج" },
+            columns: [
+               
+                { data: "product.name" },
+                { data: "color.colorName" },
+                { data: "size.sizeName" },
+                { data: "quantity" },
+                { data: "price" },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return data.price * data.quantity; // حساب الإجمالي
+                    }
+                },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return '<button class="btn-edit-sale">تعديل</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-delete-sale">حذف</button>'; // زر جديد
+                    }
+                }
+               
                 // Add other columns as needed
-            ]
+            ],
+            paging: false, // تعطيل الصفحة
+            info: false // تعطيل معلومات الجدول
         });
-    });
 
+        $('#basketsTable').on('click', '.btn-edit', function () {
+            var table = $('#basketsTable').DataTable();
+            var data = table.row($(this).parents('tr')).data();
+
+            var moneyTransformNum = prompt("أدخل قيمة moneyTransformNum");
+            if (moneyTransformNum) {
+                data.moneyTransformNum = moneyTransformNum;
+
+                $.ajax({
+                    url: '/api/Baskets',
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function () {
+                        alert('جاري معالجة طلبك!');
+                        // table.ajax.reload(); // إعادة تحميل الجدول
+
+                        window.location.href = '/Home/Index';
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert('حدث خطأ أثناء التحديث: ' + textStatus);
+                    }
+                });
+            }
+        });
+
+        $('#salesTable').on('click', '.btn-edit-sale', function () {
+            var table = $('#salesTable').DataTable();
+            var data = table.row($(this).parents('tr')).data();
+
+            var quantity = prompt("أدخل الكمية الجديدة");
+            if (quantity) {
+                data.quantity = quantity;
+
+                $.ajax({
+                    url: '/api/Sales',
+                    type: 'PUT',
+                    contentType: 'application/json',
+                    data: JSON.stringify(data),
+                    success: function () {
+
+                        // قم بتحديث البيانات في جدول Baskets
+                        updateBasketsTable();
+                        alert('تم التحديث بنجاح!');
+                        table.ajax.reload(); // إعادة تحميل الجدول
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert('حدث خطأ أثناء التحديث: ' + textStatus);
+                    }
+                });
+            }
+        });
+
+
+        $('#salesTable').on('click', '.btn-delete-sale', function () {
+            var table = $('#salesTable').DataTable();
+            var data = table.row($(this).parents('tr')).data();
+
+            $.ajax({
+                url: '/api/Sales/' + data.saleId,
+                type: 'DELETE',
+                success: function () {
+
+                    // قم بتحديث البيانات في جدول Baskets
+                    updateBasketsTable();
+                    alert('تم الحذف بنجاح!');
+                    table.ajax.reload(); // إعادة تحميل الجدول
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert('حدث خطأ أثناء الحذف: ' + textStatus);
+                }
+            });
+        });
+
+
+        function updateBasketsTable() {
+            var table = $('#basketsTable').DataTable();
+            table.ajax.reload(); // إعادة تحميل جدول Baskets
+        }
+
+    });
 </script>

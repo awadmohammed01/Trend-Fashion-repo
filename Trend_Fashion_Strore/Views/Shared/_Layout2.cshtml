@@ -33,11 +33,32 @@
                         <li class="nav-item">
                             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("TempBasket","Baskets")"><img src="~/Icon/BasketIcon.png" style="width:25px;height:25px" />السلة @ViewBag.prodnum</a>
+                        </li>
+
+                        @if (ViewBag.CustomerName != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"> @ViewBag.CustomerName</a>
+                            </li>
+
+                            <li class="nav-item">
+
+                                <form asp-action="LoginOut" asp-controller="Accounts" method="post">
+                                    <input type="submit" value="Login Out" class="nav-link" />
+                                </form>
+
+                            </li>
+
+                        }
+
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
+
                 </div>
             </div>
         </nav>

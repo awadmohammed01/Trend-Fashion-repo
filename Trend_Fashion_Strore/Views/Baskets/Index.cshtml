@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<!-- HTML -->
+<table id="basketsTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>رقم السلة</th>
+            <th>اسم العميل</th>
+            <th>الخصم</th>
+            <th>الاجمالي</th>
+            <th>حاله التاكيد</th>
+           
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+
+<br />
+<br />
+<br />
+
+<!-- jQuery -->
+<script>
+    $(document).ready(function () {
+        $('#basketsTable').DataTable({
+            ajax: {
+                url: "/api/Baskets", // تحديث هذا بناءً على موقع API الخاص بك
+                type: "GET",
+                datatype: "json",
+                dataSrc: ""
+            },
+            columns: [
+                { data: "basektId" },
+                { data: "account.name" },
+                { data: "discount" },
+                { data: "total" },
+                // { data: "note" },
+                // { data: "moneyTransformNum" }, // تمت إضافة هنا
+                // { data: "saveStatus" }, // تمت إضافة هنا
+                { data: "paymentVerification" } // تمت إضافة هنا
+            ],
+           
+        });
+    });
+</script>

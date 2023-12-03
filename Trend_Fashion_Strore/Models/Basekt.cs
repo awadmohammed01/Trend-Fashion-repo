@@ -18,10 +18,10 @@ namespace Trend_Fashion_Strore.Models
         public Account? Account { get; set; }
 
         [DisplayName("الخصم")]
-        public double? Discount { get; set; }
+        public double? Discount { get; set; } = 0;
 
         [DisplayName("اجمالي المبلغ")]
-        public double? Total { get; set; }
+        public double? Total { get; set; } = 0;
         [DisplayName("ملاحظة")]
         public string? Note { get; set; }
         public bool? Deleted { get; set; }
