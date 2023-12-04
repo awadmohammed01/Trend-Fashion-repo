@@ -92,35 +92,35 @@ namespace Trend_Fashion_Strore.Controllers._api
         //        return NotFound();
         //    }
 
-        //    basket.PaymentVerification = true;
+//        basket.PaymentVerification = true;
 
-        //    var sales = _context.Sales.Where(s => s.BasektId == id);
-        //    foreach (var sale in sales)
-        //    {
-        //        var productColorSize = await _context.ProductColorsAndSizes
-        //            .Where(p => p.ProductId == sale.ProductId && p.ColorId == sale.ColorId && p.SizeId == sale.SizeId)
-        //            .FirstOrDefaultAsync();
-        //        if (productColorSize != null)
-        //        {
-        //            productColorSize.Quantity -=Convert.ToInt32( sale.Quantity);
-        //        }
-        //    }
+//            var sales = _context.Sales.Where(s => s.BasektId == id);
+//            foreach (var sale in sales)
+//            {
+//                var productColorSize = await _context.ProductColorsAndSizes
+//                    .Where(p => p.ProductId == sale.ProductId && p.ColorId == sale.ColorId && p.SizeId == sale.SizeId)
+//                    .FirstOrDefaultAsync();
+//                if (productColorSize != null)
+//                {
+//                    productColorSize.Quantity -=Convert.ToInt32(sale.Quantity);
+//                }
+//}
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
+//try
+//{
+//    await _context.SaveChangesAsync();
+//}
         //    catch (DbUpdateConcurrencyException)
         //    {
 
-        //    }
+//    }
 
-        //    return NoContent();
-        //}
+//    return NoContent();
+//}
 
 
 
-        // DELETE: api/Baskets/5
+// DELETE: api/Baskets/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBasket(int id)
         {

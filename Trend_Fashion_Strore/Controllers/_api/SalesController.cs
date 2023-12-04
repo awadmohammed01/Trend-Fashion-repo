@@ -84,19 +84,16 @@ namespace Trend_Fashion_Strore.Controllers._api
 
 
 
-        // وحدة التحكم لـ Sales
-        // PUT: api/Baskets
+        // PUT: api/Sales
         [HttpPut]
         public async Task<IActionResult> PutSales([FromBody] Sale sale)
         {
-            var 
-                SaleTb = _context.Sales.Find(sale.SaleId);
+            var saleTb = await _context.Sales.FindAsync(sale.SaleId);
 
-            if (SaleTb == null)
+            if (saleTb == null)
             {
                 return BadRequest();
             }
-
 
             var product = await _context.Products.FindAsync(sale.ProductId);
             if (product == null)
@@ -115,33 +112,31 @@ namespace Trend_Fashion_Strore.Controllers._api
 
             // جمع كميات عمليات البيع من نفس المنتج واللون والمقاس والسلة
             var pendingSales = await _context.Sales
-                .Where(s => s.ProductId == sale.ProductId && s.ColorId == sale.ColorId && s.SizeId == sale.SizeId && s.BasektId == sale.BasektId)
+                .Where(s => s.ProductId == sale.ProductId && s.ColorId == sale.ColorId && s.SizeId == sale.SizeId && s.BasektId == sale.BasektId && s.SaleId != sale.SaleId)
                 .SumAsync(s => s.Quantity);
 
             // طرح الكمية المعلقة من الكمية المتاحة
-            var availableQuantity = (productColorsAndSizes.Quantity+SaleTb.Quantity) - pendingSales;
+            var availableQuantity = productColorsAndSizes.Quantity - pendingSales;
 
             if (availableQuantity < sale.Quantity)
             {
                 return BadRequest("الكمية غير متوفرة");
             }
 
+            var basket = await _context.Basekts.FindAsync(sale.BasektId);
 
-            var baskets = await _context.Basekts.FindAsync(sale.BasektId);
-
-            if (baskets == null)
+            if (basket == null)
             {
                 return BadRequest("فشل الوصول للسلة");
             }
 
-           
+            var oldQuantity = saleTb.Quantity;
 
+            saleTb.Quantity = sale.Quantity;
 
-            SaleTb.Quantity= sale.Quantity;
-
-            //تحديث اجمالي السلة
-            baskets.Total -= SaleTb.Quantity * SaleTb.Price;
-            baskets.Total += sale.Quantity * sale.Price;
+            // تحديث اجمالي السلة
+            basket.Total -= oldQuantity * saleTb.Price;
+            basket.Total += sale.Quantity * sale.Price;
 
             try
             {
@@ -149,13 +144,12 @@ namespace Trend_Fashion_Strore.Controllers._api
             }
             catch (DbUpdateConcurrencyException)
             {
-
                 return NotFound();
-
             }
 
             return NoContent();
         }
+
 
 
 

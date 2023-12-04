@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuGet.ContentModel;
+using System.Threading.Tasks;
 using Trend_Fashion_Strore.Data;
 using Trend_Fashion_Strore.Models;
 
@@ -140,6 +143,23 @@ namespace Trend_Fashion_Strore.Controllers
 
                 _context.Basekts.Update(Bask);
                _context.SaveChanges();
+
+                var temCustomer = _context.TempAccountInfos.Find(1);
+                if (temCustomer != null)
+                {
+                    var Basket = new Basekt();
+                    Basket.AccountId=Bask.AccountId;
+
+                    _context.Basekts.Add(Basket);
+                    _context.SaveChanges();
+
+                    temCustomer.AccountId = Bask.AccountId;
+                    temCustomer.BasketId = Basket.BasektId;
+                    _context.Entry(temCustomer).State = EntityState.Modified;
+                    _context.SaveChanges();
+                }
+
+
             }
 
             return RedirectToAction("Index","Home");
@@ -149,17 +169,45 @@ namespace Trend_Fashion_Strore.Controllers
         [HttpPost]
         public IActionResult BaksetConf([Bind("id")] int id)
         {
-            
-                var Bask = _context.Basekts.Find(id);
+            var Bask = _context.Basekts.Find(id);
+            Bask.PaymentVerification = true;
 
-                Bask.PaymentVerification = true;
+            var sales = _context.Sales.Where(s => s.BasektId == id).ToList(); // Convert to list here
+            foreach (var sale in sales)
+            {
+                var productColorSize = _context.ProductColorsAndSizes
+                    .Where(p => p.ProductId == sale.ProductId && p.ColorId == sale.ColorId && p.SizeId == sale.SizeId)
+                    .FirstOrDefault();
+                if (productColorSize != null)
+                {
+                    if (productColorSize.Quantity >= sale.Quantity)
+                    {
+                        productColorSize.Quantity -= Convert.ToInt32(sale.Quantity);
+                    }
+                    else
+                    {
+                        Bask.PaymentVerification = false;
+                        TempData["ConfEror"] = "الكميه غير كافيه في المستودع";
+                        break;
+                    }
+                }
+            }
 
-                _context.Basekts.Update(Bask);
-                _context.SaveChanges();
-            
+            if (Bask.PaymentVerification == true)
+            {
+                try
+                {
+                    _context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    // Handle exception here
+                }
+            }
 
             return RedirectToAction("Index", "Baskets");
         }
+
 
     }
 }

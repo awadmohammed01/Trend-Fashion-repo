@@ -3,6 +3,11 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+@if (TempData["ConfEror"] != null)
+{
+    <h1>@TempData["ConfEror"]</h1>
+}
+
 <br />
 
 <!-- HTML -->
