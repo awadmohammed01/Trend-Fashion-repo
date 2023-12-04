@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Create</h1>
+
+<a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">اضافة منتج</a>
+
+<!--Product create modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">انشاء عميل جديد </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark text-danger"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_CreateProduct" model="new Product()" />
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<table id="productTable" class="display">
+    <thead>
+        <tr>
+            <th>رقم المنتج</th>
+            <th>اسم المنتج</th>
+            <th>الصنف</th>
+            <th>التكلفة الموحدة</th>
+            <th>هامش الربح</th>
+            <!-- يمكنك إضافة المزيد من الأعمدة حسب الحاجة -->
+        </tr>
+    </thead>
+    <tbody>
+        <!-- سيتم ملء البيانات هنا بواسطة DataTables -->
+    </tbody>
+</table>
+
+<script>
+    $(document).ready(function () {
+        $('#productTable').DataTable({
+            ajax: {
+                url: '/api/Products', // استبدل هذا بمسار API الخاص بك
+                dataSrc: ''
+
+            },
+            columns: [
+                { data: 'productId' },
+                { data: 'name' },
+                { data: 'categorize' },
+                { data: 'cost' },
+                { data: 'profitMargin' }
+                // يمكنك إضافة المزيد من الأعمدة حسب الحاجة
+            ]
+        });
+    });
+</script>

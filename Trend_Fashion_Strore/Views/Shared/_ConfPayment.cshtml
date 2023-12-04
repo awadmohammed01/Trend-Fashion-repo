@@ -1,0 +1,44 @@
+﻿
+@model Basekt
+
+
+
+
+
+<div class="container">
+    <form asp-action="conf" asp-controller="Baskets">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group" style="display:inline-block" hidden>
+            <label asp-for="BasektId" class="control-label"></label>
+            <input asp-for="BasektId" value="@Model.BasektId" class="form-control" />
+            <span asp-validation-for="BasektId" class="text-danger"></span>
+        </div>
+        
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="MoneyTransformNum" class="control-label"></label>
+            <input asp-for="MoneyTransformNum" class="form-control" />
+            <span asp-validation-for="MoneyTransformNum" class="text-danger"></span>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-group" style="display:inline-block" hidden>
+            <label asp-for="SaveStatus" class="control-label"></label>
+            <input asp-for="SaveStatus" value="@true" class="form-control" />
+            <span asp-validation-for="SaveStatus" class="text-danger"></span>
+        </div>
+
+       
+
+
+        <div class="form-group">
+            <input type="submit" value="تاكيد الدفع" class="btn btn-default" />
+        </div>
+
+    </form>
+</div>
+
+
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

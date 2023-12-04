@@ -37,7 +37,24 @@
     </tbody>
 </table>
 
+<a class="btn btn-success" data-toggle="modal" data-target="#exampleModal">تاكيد الدفع</a>
+<!--Basket conf modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">تاكيد الدفع </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark text-danger"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <partial name="_ConfPayment" model="new Basekt{BasektId=@ViewBag.BasketId}" />
+            </div>
 
+        </div>
+    </div>
+</div>
 
 <!-- jQuery -->
 <script>
@@ -58,12 +75,7 @@
                 { data: "discount" },
                 { data: "total" },
                 { data: "note" },
-                {
-                    data: null,
-                    render: function (data, type, row) {
-                        return '<button class="btn-edit">تاكيد الدفع</button>'; // زر جديد
-                    }
-                }
+                
             ],
             searching: false, // تعطيل مربع البحث
             ordering: false, // تعطيل الفرز
@@ -104,32 +116,8 @@
             info: false // تعطيل معلومات الجدول
         });
 
-        $('#basketsTable').on('click', '.btn-edit', function () {
-            var table = $('#basketsTable').DataTable();
-            var data = table.row($(this).parents('tr')).data();
+      
 
-            var moneyTransformNum = prompt("أدخل قيمة moneyTransformNum");
-            if (moneyTransformNum) {
-                data.moneyTransformNum = moneyTransformNum;
-
-                $.ajax({
-                    url: '/api/Baskets',
-                    type: 'PUT',
-                    contentType: 'application/json',
-                    data: JSON.stringify(data),
-                    success: function () {
-                        alert('جاري معالجة طلبك!');
-                        // table.ajax.reload(); // إعادة تحميل الجدول
-
-                        window.location.href = '/Home/Index';
-
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert('حدث خطأ أثناء التحديث: ' + textStatus);
-                    }
-                });
-            }
-        });
 
         $('#salesTable').on('click', '.btn-edit-sale', function () {
             var table = $('#salesTable').DataTable();

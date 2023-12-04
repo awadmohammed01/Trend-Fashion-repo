@@ -45,21 +45,16 @@ namespace Trend_Fashion_Strore.Controllers._api
         {
             var bask = _context.Basekts.Find(basket.BasektId);
 
-            if (bask == null ||bask.Total==null|| bask.Total==0 )
+            if (bask == null || bask.Total == null || bask.Total == 0)
             {
                 return BadRequest();
             }
 
-           bask.MoneyTransformNum = basket.MoneyTransformNum;
+            bask.MoneyTransformNum = basket.MoneyTransformNum;
             bask.SaveStatus = true;
-
-           
-
-
+            _context.Entry(bask).State = EntityState.Modified;
             try
             {
-                // انشاء سله جديده وربطها بالعميل
-
                 var temCustomer = _context.TempAccountInfos.Find(1);
                 if (temCustomer != null)
                 {
@@ -68,28 +63,65 @@ namespace Trend_Fashion_Strore.Controllers._api
                     _context.Basekts.Add(Basket);
                     _context.SaveChanges();
 
-
                     temCustomer.AccountId = bask.AccountId;
                     temCustomer.BasketId = Basket.BasektId;
-                    _context.Update(temCustomer);
-                    
+                    _context.Entry(temCustomer).State = EntityState.Modified;
+                    _context.SaveChanges();
                 }
-              
+
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                
-                    return NotFound();
-             
+                return NotFound();
             }
 
             return NoContent();
         }
 
 
+
+        //// PUT: api/ConfirmSale/5
+        //[HttpPut("ConfirmSale/{id}")]
+        //public async Task<IActionResult> ConfirmSale(int id)
+        //{
+        //    var basket = await _context.Basekts.FindAsync(id);
+
+        //    if (basket == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    basket.PaymentVerification = true;
+
+        //    var sales = _context.Sales.Where(s => s.BasektId == id);
+        //    foreach (var sale in sales)
+        //    {
+        //        var productColorSize = await _context.ProductColorsAndSizes
+        //            .Where(p => p.ProductId == sale.ProductId && p.ColorId == sale.ColorId && p.SizeId == sale.SizeId)
+        //            .FirstOrDefaultAsync();
+        //        if (productColorSize != null)
+        //        {
+        //            productColorSize.Quantity -=Convert.ToInt32( sale.Quantity);
+        //        }
+        //    }
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+
+        //    }
+
+        //    return NoContent();
+        //}
+
+
+
         // DELETE: api/Baskets/5
-        [HttpDelete("BasketDelete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBasket(int id)
         {
             var basket = await _context.Basekts.FindAsync(id);

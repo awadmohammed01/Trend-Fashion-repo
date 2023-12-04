@@ -6,6 +6,12 @@
 <br />
 
 <!-- HTML -->
+<label for="filter">تصفية حسب حالة التأكيد:</label>
+<input type="checkbox" id="filter">
+
+<br />
+<br />
+
 <table id="basketsTable" class="display" style="width:100%">
     <thead>
         <tr>
@@ -14,13 +20,12 @@
             <th>الخصم</th>
             <th>الاجمالي</th>
             <th>حاله التاكيد</th>
-           
+            <th>الإجراءات</th>
         </tr>
     </thead>
     <tbody>
     </tbody>
 </table>
-
 
 <br />
 <br />
@@ -29,7 +34,8 @@
 <!-- jQuery -->
 <script>
     $(document).ready(function () {
-        $('#basketsTable').DataTable({
+       
+        var table = $('#basketsTable').DataTable({
             ajax: {
                 url: "/api/Baskets", // تحديث هذا بناءً على موقع API الخاص بك
                 type: "GET",
@@ -41,12 +47,53 @@
                 { data: "account.name" },
                 { data: "discount" },
                 { data: "total" },
-                // { data: "note" },
-                // { data: "moneyTransformNum" }, // تمت إضافة هنا
-                // { data: "saveStatus" }, // تمت إضافة هنا
-                { data: "paymentVerification" } // تمت إضافة هنا
-            ],
-           
+                { data: "paymentVerification" },
+                {
+                    data: null,
+                    defaultContent: '<button class="btn-delete">حذف</button> <button class="btn-details">تفاصيل</button>'
+                }
+            ]
         });
+
+        $('#basketsTable').on('click', '.btn-delete', function () {
+            var data = table.row($(this).parents('tr')).data();
+            deleteBasket(data.basektId);
+        });
+
+        $('#basketsTable').on('click', '.btn-details', function () {
+            var data = table.row($(this).parents('tr')).data();
+            window.location.href = '/Baskets/BasketDetails/' + data.basektId;
+        });
+
+        // إضافة مستمع الحدث لمربع الاختيار "تصفية حسب حالة التأكيد"
+        $('#filter').on('change', function () {
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    var filter = $('#filter').prop('checked');
+                    var status = data[4].trim() === 'true';
+                    if (filter) {
+                        return !status;
+                    }
+                    return status;
+                }
+            );
+            table.draw();
+            $.fn.dataTable.ext.search.pop();
+        });
+
+        
     });
+
+    $('#filter').prop('checked', true);
+
+    function deleteBasket(basektId) {
+        $.ajax({
+            url: "/api/Baskets/" + basektId,
+            type: "DELETE",
+            success: function (result) {
+                // إعادة تحميل الجدول
+                $('#basketsTable').DataTable().ajax.reload();
+            }
+        });
+    }
 </script>

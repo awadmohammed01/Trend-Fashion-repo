@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Protocol;
 using Trend_Fashion_Strore.Data;
 using Trend_Fashion_Strore.Models;
 
@@ -107,8 +108,46 @@ namespace Trend_Fashion_Strore.Controllers
 
 
 
+        public IActionResult Create()
+        {
+        //    //check tem account ------------------------------
+        //    var TempAccount = _context.TempAccountInfos.Find(1);
+
+        //    if (TempAccount != null && TempAccount.AccountId == 1)
+        //    {
+        //        ModelState.AddModelError("not sing", "not sing");
+
+        //        return RedirectToAction("Login", "Accounts");
+        //    }
+
+        //    //-------------------------------------------------
+
+        //        if (TempAccount != null && TempAccount.AccountId != 1)
+        //        {
+        //            var custom = _context.Accounts.Find(TempAccount.AccountId);
+        //            ViewBag.CustomerName = custom?.Name;
+
+                  
+        //        }
 
 
+            return View();
+
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Products.Add(product);
+                _context.SaveChanges();
+            }
+
+            return View();
+
+        }
 
 
 

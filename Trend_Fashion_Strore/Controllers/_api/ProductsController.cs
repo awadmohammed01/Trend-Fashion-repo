@@ -60,10 +60,20 @@ namespace Trend_Fashion_Strore.Controllers._api
         }
 
 
+        // POST: api/Products
+        [HttpPost]
+        public async Task<ActionResult<Product>> PostProduct(Product product)
+        {
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetProducts", new { id = product.ProductId }, product);
+        }
+
 
 
         // هذه الوظيفة تنشئ منتجًا جديدًا
-        [HttpPost]
+        [HttpPost("CreateProduct")]
         public async Task<IActionResult> CreateProduct([FromBody] Product product)
         {
             // إضافة المنتج إلى قاعدة البيانات

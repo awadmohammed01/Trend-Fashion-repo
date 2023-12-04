@@ -1,0 +1,119 @@
+﻿@{
+    ViewData["Title"] = "BasketDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<form asp-action="BaksetConf" asp-controller="Baskets" method="post">
+
+
+    <input type="text" name="id" value="@ViewBag.BasketId" hidden />
+
+    <input type="submit" class="btn-confirm-sale" value="تأكيد البيع"/>
+
+
+</form>
+
+
+<!-- جدول السلة -->
+<table id="basketTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>رقم السلة</th>
+            <th>رقم الحساب</th>
+            <th>الخصم</th>
+            <th>الاجمالي</th>
+            <th>رقم الحواله</th>
+            <th>تاريخ الارسال</th>
+            <th>حاله التاكيد</th>
+            <th></th> <!-- عمود جديد للزر -->
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<br />
+<br />
+<br />
+
+<!-- جدول المبيعات -->
+<table id="salesTable" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>اسم المنتج</th>
+            <th>اللون</th>
+            <th>المقاس</th>
+            <th>الكميه</th>
+            <th>السعر</th>
+            <th>الاجمالي</th>
+            <!-- أضف الأعمدة الأخرى هنا -->
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<br />
+<br />
+
+<script>
+    $(document).ready(function () {
+        var basketId = '@ViewBag.BasketId'; // استرجع BasketId من ViewBag
+
+        // جدول السلة
+        $('#basketTable').DataTable({
+            ajax: {
+                url: "/api/Baskets/" + basketId, // تحديث هذا بناءً على موقع API الخاص بك
+                type: "GET",
+                datatype: "json",
+                dataSrc: ""
+            },
+            columns: [
+                { data: "basektId" },
+                { data: "account.name" },
+                { data: "discount" },
+                { data: "total" },
+                { data: "moneyTransformNum" },
+                { data: "createdAt" },
+                { data: "paymentVerification" },
+               
+                // أضف الأعمدة الأخرى هنا
+            ],
+
+            searching: false, // تعطيل مربع البحث
+            ordering: false, // تعطيل الفرز
+            paging: false, // تعطيل الصفحة
+            info: false // تعطيل معلومات الجدول
+        });
+
+        // جدول المبيعات
+        $('#salesTable').DataTable({
+            ajax: {
+                url: "/api/Sales/" + basketId, // تحديث هذا بناءً على موقع API الخاص بك
+                type: "GET",
+                datatype: "json",
+                dataSrc: ""
+            },
+            columns: [
+                { data: "product.name" },
+                { data: "color.colorName" },
+                { data: "size.sizeName" },
+                { data: "quantity" },
+                { data: "price" },
+                {
+                    data: null,
+                    render: function (data, type, row) {
+                        return data.quantity * data.price; // حساب الإجمالي
+                    }
+                },
+                // أضف الأعمدة الأخرى هنا
+            ],
+            paging: false, // تعطيل الصفحة
+            info: false // تعطيل معلومات الجدول
+        });
+
+       
+    });
+</script>

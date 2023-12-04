@@ -1,0 +1,53 @@
+﻿@model Product
+
+
+
+
+
+<div class="container">
+    <form asp-action="Create" asp-controller="Product">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="Categorize" class="control-label"></label>
+            <input asp-for="Categorize" class="form-control" />
+            <span asp-validation-for="Categorize" class="text-danger"></span>
+        </div>
+
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="Cost" class="control-label"></label>
+            <input asp-for="Cost" class="form-control" />
+            <span asp-validation-for="Cost" class="text-danger"></span>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="ProfitMargin" class="control-label"></label>
+            <input asp-for="ProfitMargin" class="form-control" />
+            <span asp-validation-for="ProfitMargin" class="text-danger"></span>
+        </div>
+        &nbsp;&nbsp;&nbsp;
+        <div class="form-group" style="display:inline-block">
+            <label asp-for="Note" class="control-label"></label>
+            <input asp-for="Note" class="form-control" />
+            <span asp-validation-for="Note" class="text-danger"></span>
+        </div>
+       
+       
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+        
+    </form>
+</div>
+
+
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

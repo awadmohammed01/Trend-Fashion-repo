@@ -50,6 +50,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Baskets/BaketDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0c1xCYWtldERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Baskets/BasketDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0c1xCYXNrZXREZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Baskets/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -58,12 +66,96 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFza2V0c1xUZW1wQmFza2V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Colors/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Colors/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Colors/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Colors/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Colors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductColorsAndSizes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENvbG9yc0FuZFNpemVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductColorsAndSizes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENvbG9yc0FuZFNpemVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductColorsAndSizes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENvbG9yc0FuZFNpemVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductColorsAndSizes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENvbG9yc0FuZFNpemVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductColorsAndSizes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdENvbG9yc0FuZFNpemVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductImages/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductImages/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductImages/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductImages/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/ProductImages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdEltYWdlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Products1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHMxXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Products1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHMxXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Products1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHMxXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Products1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHMxXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Products1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHMxXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Product/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Product/Index.cshtml]
@@ -82,8 +174,16 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Shared/_ConfPayment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Db25mUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Shared/_CreateAccount.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGVBY2NvdW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Shared/_CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9DcmVhdGVQcm9kdWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Shared/_Layout2.cshtml]
@@ -92,6 +192,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Sizes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l6ZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Sizes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l6ZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Sizes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l6ZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Sizes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l6ZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Sizes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l6ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/_ViewImports.cshtml]

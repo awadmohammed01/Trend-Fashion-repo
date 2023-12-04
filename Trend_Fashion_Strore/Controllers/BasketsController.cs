@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Trend_Fashion_Strore.Data;
+using Trend_Fashion_Strore.Models;
 
 namespace Trend_Fashion_Strore.Controllers
 {
@@ -85,6 +86,79 @@ namespace Trend_Fashion_Strore.Controllers
             }
 
             return View();
+        }
+
+
+
+        public IActionResult BasketDetails(int id)
+        {
+            //check tem account ------------------------------
+            var TempAccount = _context.TempAccountInfos.Find(1);
+
+            if (TempAccount != null && TempAccount.AccountId == 1)
+            {
+                ModelState.AddModelError("not sing", "not sing");
+
+                return RedirectToAction("Login", "Accounts");
+            }
+
+            ViewBag.BasketId = id;
+            //-------------------------------------------------
+
+
+            if (TempAccount != null && TempAccount.AccountId != 1)
+            {
+                var custom = _context.Accounts.Find(TempAccount.AccountId);
+                ViewBag.CustomerName = custom?.Name;
+
+            }
+
+            var basketId=_context.Basekts.Find(id); 
+
+            if (basketId == null)
+            {
+                return NotFound();
+            }
+         
+
+            ViewBag.BasketId=id;
+
+            return View();
+        }
+
+
+
+        [HttpPost]
+        public IActionResult Conf(Basekt basekt)
+        {
+            if (ModelState.IsValid)
+            {
+                var Bask = _context.Basekts.Find(basekt.BasektId);
+
+                Bask.MoneyTransformNum = basekt.MoneyTransformNum;
+                Bask.SaveStatus = true;
+
+                _context.Basekts.Update(Bask);
+               _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index","Home");
+        }
+
+
+        [HttpPost]
+        public IActionResult BaksetConf([Bind("id")] int id)
+        {
+            
+                var Bask = _context.Basekts.Find(id);
+
+                Bask.PaymentVerification = true;
+
+                _context.Basekts.Update(Bask);
+                _context.SaveChanges();
+            
+
+            return RedirectToAction("Index", "Baskets");
         }
 
     }
