@@ -26,6 +26,26 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\مشاريع\Trend_Fashion_Strore\Trend-Fashion-repo\Trend_Fashion_Strore
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHMxXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHMxXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHMxXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHMxXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHMxXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/مشاريع/Trend_Fashion_Strore/Trend-Fashion-repo/Trend_Fashion_Strore/Views/Accounts/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

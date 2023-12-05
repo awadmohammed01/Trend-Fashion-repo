@@ -10,10 +10,10 @@ namespace Trend_Fashion_Strore.Models
 
 
         [Required]
-        [DisplayName("رقم المنتج")]
+        [DisplayName(" المنتج")]
         public int ProductId { get; set; }
         [ForeignKey(nameof(ProductId))]
-        [DisplayName("رقم المنتج")]
+        [DisplayName(" المنتج")]
         public Product? Product { get; set; }
 
 
